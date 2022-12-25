@@ -14,27 +14,27 @@ public class Ring {
     void run() {
         if (checkWeight()) {
             int counter = 1;
-            while (f1.health > 0 && f2.health > 0) {
+            while (this.f1.health > 0 && this.f2.health > 0) {
                 System.out.println("*********************************\n" +
                         "      ROUND " + counter + " HAS STARTED !!\n" +
                         "*********************************");
                 if (isChance()) {
-                    f1.health = f1.round(f2);
+                    this.f1.health = this.f1.round(this.f2);
                     if (isWin()) {
                         break;
                     } else {
-                        f2.health = f2.round(f1);
+                        this.f2.health = this.f2.round(f1);
                         if (isWin()) {
                             break;
                         }
                     }
                     printInfo();
                 } else {
-                    f2.health = f2.round(f1);
+                    this.f2.health = this.f2.round(this.f1);
                     if (isWin()) {
                         break;
                     } else {
-                        f1.health = f1.round(f2);
+                        this.f1.health = this.f1.round(this.f2);
                         if (isWin()) {
                             break;
                         }
@@ -61,19 +61,19 @@ public class Ring {
 
     void printInfo() {
         System.out.println("------------------------------------");
-        System.out.println(f1.nickName + " 's remaining health:  " + f1.health);
-        System.out.println(f2.nickName + " 's remaining health:  " + f2.health);
+        System.out.println(this.f1.nickName + " 's remaining health:  " + this.f1.health);
+        System.out.println(this.f2.nickName + " 's remaining health:  " + this.f2.health);
         System.out.println("------------------------------------");
     }
 
     boolean isWin() {
-        if (f1.health <= 0) {
-            f1.health = 0;
-            System.out.println("The winner is " + f2.nickName + " !");
+        if (this.f1.health <= 0) {
+            this.f1.health = 0;
+            System.out.println("The winner is " + this.f2.nickName + " !");
             return true;
-        } else if (f2.health <= 0) {
-            f2.health = 0;
-            System.out.println("The winner is " + f1.nickName + " !");
+        } else if (this.f2.health <= 0) {
+            this.f2.health = 0;
+            System.out.println("The winner is " + this.f1.nickName + " !");
             return true;
         }
         return false;
